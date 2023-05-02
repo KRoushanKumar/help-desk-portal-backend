@@ -59,21 +59,29 @@ public class LoginController {
 //
 //		The gensalt() method takes an optional parameter (log_rounds) that determines the computational complexity of the hashing:
 
-		User tempUser = new User();
-		tempUser = userService.getUserByUserName(user.getUserName());
-		System.out.println(tempUser);
-		//String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
-
-        if (BCrypt.checkpw( user.getPassword(),tempUser.getPassword())) {
-            System.out.println("It matches");
-            return tempUser;
-        }
-
-        else {
-            System.out.println("It does not match");
-        }
-		
-		return user;
+		if(!user.equals(null))
+		{
+			User tempUser = new User();
+			tempUser = userService.getUserByUserName(user.getUserName());
+			if(tempUser == null)
+				return user;
+			
+			System.out.println(tempUser);
+			//String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+	
+	        if (BCrypt.checkpw( user.getPassword(),tempUser.getPassword())) {
+	            System.out.println("It matches");
+	            return tempUser;
+	        }
+	
+	        else {
+	            System.out.println("It does not match");
+	        }
+			
+			return user;
+		}
+		else
+			return user;
 	}
 
 }
