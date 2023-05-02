@@ -4,4 +4,6 @@ import com.helpDeskPortal.HDP.entity.User;
 
 public interface UserService {
 	public void save(User user);
+
+	public User getUserByUserName(String userName);
 }

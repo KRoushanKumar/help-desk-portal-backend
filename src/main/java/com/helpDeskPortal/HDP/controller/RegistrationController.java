@@ -1,5 +1,7 @@
 package com.helpDeskPortal.HDP.controller;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.helpDeskPortal.HDP.Service.RoleService;
 import com.helpDeskPortal.HDP.Service.UserService;
 import com.helpDeskPortal.HDP.entity.User;
 
@@ -20,26 +23,24 @@ public class RegistrationController {
 	
 	@Autowired
 	private UserService userService;
+	private RoleService roleService;
 	
 	
-	
-	public RegistrationController(UserService userService) {
+	public RegistrationController(UserService userService,RoleService roleService) {
 		super();
 		this.userService = userService;
+		this.roleService = roleService;
 	}
 	
 	@PostMapping("/registration")
 	public void registration(@RequestBody User user)
 	{
 		System.out.println(user.toString());
+		user.setRoles(Arrays.asList(roleService.getRoleByName("Admin")));
 		userService.save(user);
 	}
 	
-	@PostMapping("/show")
-	public void show()
-	{
-		System.out.print("ragini");
-	}
+	
 	
 	
 	

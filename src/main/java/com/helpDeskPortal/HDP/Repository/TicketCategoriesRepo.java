@@ -8,12 +8,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.helpDeskPortal.HDP.entity.TicketCategories;
-import com.helpDeskPortal.HDP.entity.User;
 
-public interface UserRepo extends JpaRepository<User, Integer> {
-	
-	
-	String query4 = "select * from user where username=:username";
-	@Query(value = query4,nativeQuery = true)
-	public User getUserByUserName(@Param("username") String username);
+public interface TicketCategoriesRepo extends JpaRepository<TicketCategories, Integer> {
+
+
+	String query3 = "SELECT * FROM ticket_categories where id=:id";
+	@Transactional
+	@Modifying(clearAutomatically = true)
+	@Query(value = query3,nativeQuery = true)
+	public TicketCategories getTicketCategoriesById(@Param("id") int i);
+
 }
