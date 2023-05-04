@@ -23,6 +23,7 @@ public class User {
 	@Column(name = "id")
 	private Integer id;
 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "username")
 	private String userName;
 
@@ -43,12 +44,15 @@ public class User {
 	joinColumns = @JoinColumn(name = "user_id"), 
 	inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Collection<Role> roles;
+	
+	@Column(name = "admin_id")
+	private int adminId;
 
 	public User()
 	{
 		
 	}
-	public User(Integer id, String userName, String password, String firstName, String lastName, String email) {
+	public User(Integer id, String userName, String password, String firstName, String lastName, String email,int adminId) {
 		super();
 		this.id = id;
 		this.userName = userName;
@@ -56,6 +60,7 @@ public class User {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.adminId = adminId;
 	}
 	
 	
@@ -117,6 +122,15 @@ public class User {
 		this.email = email;
 	}
 	
+	
+	
+	
+	public int getAdminId() {
+		return adminId;
+	}
+	public void setAdminId(int adminId) {
+		this.adminId = adminId;
+	}
 	
 	public Collection<Role> getRoles() {
 		return roles;
