@@ -1,5 +1,7 @@
 package com.helpDeskPortal.HDP.Repository;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,5 +25,5 @@ public interface UserRepo extends JpaRepository<User, Integer> {
 	//@Modifying(clearAutomatically = true)
 	@Query(value = query5,nativeQuery = true)
 	//SELECT * FROM help_desk_portal.user where admin_id=0;
-	public User getAllEmployee(@Param("adminId") int adminId);
+	public List<User> getAllEmployee(@Param("adminId") int adminId);
 }

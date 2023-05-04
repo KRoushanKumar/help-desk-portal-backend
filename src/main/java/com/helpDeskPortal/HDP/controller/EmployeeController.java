@@ -1,5 +1,7 @@
 package com.helpDeskPortal.HDP.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
@@ -33,7 +35,7 @@ public class EmployeeController {
 		this.empService = empService;
 	}
 	@PostMapping("/getAllEmployees/{adminId}")
-	public @ResponseBody User getAllEmployees(@PathVariable int adminId)
+	public @ResponseBody List<User> getAllEmployees(@PathVariable int adminId)
 	{
 		return empService.getAllEmployee(adminId) ;
 	}
