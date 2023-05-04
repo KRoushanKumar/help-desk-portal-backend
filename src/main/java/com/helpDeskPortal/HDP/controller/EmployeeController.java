@@ -1,17 +1,18 @@
 package com.helpDeskPortal.HDP.controller;
 
-import java.util.Arrays;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.helpDeskPortal.HDP.Service.RoleService;
-import com.helpDeskPortal.HDP.Service.UserService;
+import com.helpDeskPortal.HDP.Service.EmployeeService;
 import com.helpDeskPortal.HDP.entity.User;
 
 @Controller
@@ -19,31 +20,22 @@ import com.helpDeskPortal.HDP.entity.User;
 @RequestMapping("/api")
 
 @RestController()
-public class RegistrationController {
+public class EmployeeController {
+	
 	
 	@Autowired
-	private UserService userService;
-	private RoleService roleService;
+	private EmployeeService empService;
 	
 	
-	public RegistrationController(UserService userService,RoleService roleService) {
+	
+	public EmployeeController(EmployeeService empService) {
 		super();
-		this.userService = userService;
-		this.roleService = roleService;
+		this.empService = empService;
 	}
-	
-	@PostMapping("/registration")
-	public void registration(@RequestBody User user)
+	@PostMapping("/getAllEmployees/{adminId}")
+	public @ResponseBody User getAllEmployees(@PathVariable int adminId)
 	{
-		System.out.println(user.toString());
-		user.setRoles(Arrays.asList(roleService.getRoleByName("Admin")));
-		user.setAdminId(0);
-		userService.save(user);
+		return empService.getAllEmployee(adminId) ;
 	}
-	
-	
-	
-	
-	
 
 }
