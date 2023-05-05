@@ -2,6 +2,7 @@ package com.helpDeskPortal.HDP.Service;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,9 +27,9 @@ public class TicketCategoriesServiceImp implements TicketCategoriesService {
 
 
 	@Override
-	public void save(TicketCategories ticketCategories) {
+	public TicketCategories save(TicketCategories ticketCategories) {
 		
-		ticketCategoriesRepo.save(ticketCategories);
+		return ticketCategoriesRepo.save(ticketCategories);
 	}
 
 
@@ -47,6 +48,14 @@ public class TicketCategoriesServiceImp implements TicketCategoriesService {
 	@Override
 	public List<TicketCategories> getAll() {
 		return ticketCategoriesRepo.findAll();
+	}
+
+
+
+	@Override
+	public Optional<TicketCategories> findById(int i) {
+		
+		return ticketCategoriesRepo.findById(i);
 	}
 
 }

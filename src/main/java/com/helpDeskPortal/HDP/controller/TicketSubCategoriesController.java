@@ -1,15 +1,14 @@
 package com.helpDeskPortal.HDP.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.helpDeskPortal.HDP.Service.TicketCategoriesService;
@@ -24,9 +23,8 @@ import com.helpDeskPortal.HDP.entity.TicketSubCategories;
 @RestController()
 public class TicketSubCategoriesController {
 	@Autowired
-	private TicketSubCategoriesService ticketSubCategoriesService;
 	private TicketCategoriesService  ticketCategoriesService;  
-
+	private TicketSubCategoriesService ticketSubCategoriesService;
 	public TicketSubCategoriesController()
 	{
 		
@@ -42,18 +40,21 @@ public class TicketSubCategoriesController {
 	}
 
 
-
+    // Add Ticket SubCategories 
 	//@SuppressWarnings("unchecked")
-	@PostMapping("/addTicketSubCategories")
-	public void addTicketSubCategories(@RequestBody TicketSubCategories ticketSubCategories )
+	@PostMapping("/addTicketSubCategories/{tCateId}")
+	public @ResponseBody TicketCategories addTicketSubCategories(@RequestBody TicketSubCategories tempTicketSubCategories,
+				@PathVariable int tCateId )
 	{
-		//List<TicketCategories> ticCat = new ArrayList<>();
-		//ticCat =  ticketCategoriesService.getAll();
-		//System.out.println("Ticket "+ticCat.toString());
-		//if(ticCat!=null) {
-		//ticCat.setTicketSubCategeries((List<TicketSubCategories>) ticketSubCategories);
-		//ticketSubCategoriesService.save(ticketSubCategories);
-		//}
+		TicketCategories ticCat = ticketCategoriesService.getById(tCateId);
+		
+		System.out.println(ticCat);
+		ticCat.add(tempTicketSubCategories);
+		//tempTicketSubCategories.setTicketCategories(ticCat);
+		
+		System.out.println(ticCat);
+		
+		return ticketCategoriesService.save(ticCat);
 		
 	}
 }

@@ -13,9 +13,9 @@ public interface TicketCategoriesRepo extends JpaRepository<TicketCategories, In
 
 
 	String query3 = "SELECT * FROM ticket_categories where id=:id";
-	@Transactional
-	@Modifying(clearAutomatically = true)
+	//@Transactional
+	//@Modifying(clearAutomatically = true)
 	@Query(value = query3,nativeQuery = true)
-	public TicketCategories getTicketCategoriesById(@Param("id") int i);
+	public TicketCategories getTicketCategoriesById(@Param("id") Integer i);
 
 }
