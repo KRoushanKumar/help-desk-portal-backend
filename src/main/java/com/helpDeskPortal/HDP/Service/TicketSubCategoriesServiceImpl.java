@@ -1,5 +1,7 @@
 package com.helpDeskPortal.HDP.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,23 @@ public class TicketSubCategoriesServiceImpl implements TicketSubCategoriesServic
 		
 		 ticketSubCategoriesRepo.save(ticketSubCategories);
 			
+	}
+
+
+
+	@Override
+	public List<TicketSubCategories> findAllByTickCategryId(int ticCCatId) {
+		
+		
+		return ticketSubCategoriesRepo.findAllByTickCategryId(ticCCatId);
+	}
+
+
+
+	@Override
+	public List<TicketSubCategories> findAll() {
+		
+		return ticketSubCategoriesRepo.findAll();
 	}
 
 }

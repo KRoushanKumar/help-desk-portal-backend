@@ -1,9 +1,13 @@
 package com.helpDeskPortal.HDP.controller;
 
 
+import java.util.List;
+
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,22 +29,22 @@ public class TicketSubCategoriesController {
 	@Autowired
 	private TicketCategoriesService  ticketCategoriesService;  
 	private TicketSubCategoriesService ticketSubCategoriesService;
-	public TicketSubCategoriesController()
-	{
-		
-	}
-
 	
-
-	public TicketSubCategoriesController(TicketSubCategoriesService ticketSubCategoriesService,
-			TicketCategoriesService ticketCategoriesService) {
+	private static final Logger  logger = Logger.getLogger(TicketSubCategoriesController.class);
+	
+	
+    public TicketSubCategoriesController(TicketCategoriesService ticketCategoriesService,
+			TicketSubCategoriesService ticketSubCategoriesService) {
 		super();
-		this.ticketSubCategoriesService = ticketSubCategoriesService;
 		this.ticketCategoriesService = ticketCategoriesService;
+		this.ticketSubCategoriesService = ticketSubCategoriesService;
 	}
 
 
-    // Add Ticket SubCategories 
+
+
+
+	// Add Ticket SubCategories 
 	//@SuppressWarnings("unchecked")
 	@PostMapping("/addTicketSubCategories/{tCateId}")
 	public @ResponseBody TicketCategories addTicketSubCategories(@RequestBody TicketSubCategories tempTicketSubCategories,
@@ -57,4 +61,16 @@ public class TicketSubCategoriesController {
 		return ticketCategoriesService.save(ticCat);
 		
 	}
+	// get all  ticket sub categories by ticket category Id 
+	@GetMapping("/subTickCatgyByTicCatgyId/{TicCatId}")
+	public List<TicketSubCategories> SubCatByCatId(@PathVariable int TicCatId)
+	{
+		
+		logger.debug("subTickCatgyByTicCatgyId");
+		return ticketSubCategoriesService.findAllByTickCategryId(TicCatId);
+		//return ticketSubCategoriesService.findAll();
+		
+	}
+	
+	
 }

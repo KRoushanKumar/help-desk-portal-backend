@@ -25,10 +25,9 @@ public class TicketCategories {
 	private String name;
 	
 	
+	
 	//One to many mapping
 	//One ticket Categories have many sub categories
-	//
-	//
 	@OneToMany(cascade= {CascadeType.ALL})
 	@JoinColumn(name = "TicketCategories_id", referencedColumnName = "id")
 	private List<TicketSubCategories> ticketSubCategeries;
