@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.helpDeskPortal.HDP.Repository.TicketCategoriesRepo;
+import com.helpDeskPortal.HDP.Repository.UserRepo;
 import com.helpDeskPortal.HDP.entity.TicketCategories;
+import com.helpDeskPortal.HDP.entity.User;
 
 @Service
 public class TicketCategoriesServiceImp implements TicketCategoriesService {
@@ -16,12 +18,16 @@ public class TicketCategoriesServiceImp implements TicketCategoriesService {
 	
 	@Autowired
 	private TicketCategoriesRepo ticketCategoriesRepo;
+	private UserService userService;
 	
 	
 	
-	public TicketCategoriesServiceImp(TicketCategoriesRepo ticketCategoriesRepo) {
+	public TicketCategoriesServiceImp(TicketCategoriesRepo ticketCategoriesRepo,
+			UserService userService) {
 		super();
+		
 		this.ticketCategoriesRepo = ticketCategoriesRepo;
+		this.userService = userService;
 	}
 
 
@@ -56,6 +62,40 @@ public class TicketCategoriesServiceImp implements TicketCategoriesService {
 	public Optional<TicketCategories> findById(int i) {
 		
 		return ticketCategoriesRepo.findById(i);
+	}
+
+
+
+	@Override
+	public void saveByAdminId(TicketCategories ticketCategories, int adminId) {
+		
+		User user = new User();
+		try {
+			user = userService.findById(adminId);
+			if(user!=null) {
+				user.addTickCtgry(ticketCategories);
+				//userService.save(user);
+				userService.update(user);
+			}
+			else
+			{
+				System.out.println("User null");
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		
+		
+	}
+
+
+
+	@Override
+	public List<TicketCategories> getAllbyAbminId(int adminId) {
+		
+		return ticketCategoriesRepo.getAllByAdminId(adminId);
 	}
 
 }

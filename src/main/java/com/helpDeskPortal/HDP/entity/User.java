@@ -1,6 +1,8 @@
 package com.helpDeskPortal.HDP.entity;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -47,12 +50,19 @@ public class User {
 	
 	@Column(name = "admin_id")
 	private int adminId;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "admin_id" , referencedColumnName = "id")
+	private List<TicketCategories> ticketCategories;
+	
 
 	public User()
 	{
 		
 	}
-	public User(Integer id, String userName, String password, String firstName, String lastName, String email,int adminId) {
+	public User(Integer id, String userName, String password, 
+			String firstName, String lastName, String email,int adminId) 
+	{
 		super();
 		this.id = id;
 		this.userName = userName;
@@ -61,9 +71,23 @@ public class User {
 		this.lastName = lastName;
 		this.email = email;
 		this.adminId = adminId;
+		
 	}
 	
 	
+	
+	public User(String userName, String password, String firstName, String lastName, String email,
+			Collection<Role> roles, int adminId, List<TicketCategories> ticketCategories) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.roles = roles;
+		this.adminId = adminId;
+		this.ticketCategories = ticketCategories;
+	}
 	public User(String userName, String password, String firstName, String lastName, String email,
 			Collection<Role> roles) {
 		super();
@@ -137,6 +161,25 @@ public class User {
 	}
 	public void setRoles(Collection<Role> roles) {
 		this.roles = roles;
+	}
+	
+	
+	
+	public List<TicketCategories> getTicketCategories() {
+		return ticketCategories;
+	}
+	public void setTicketCategories(List<TicketCategories> ticketCategories) {
+		this.ticketCategories = ticketCategories;
+	}
+	
+	public void addTickCtgry(TicketCategories tempticCtgry)
+	{
+		if(ticketCategories==null)
+		{
+			ticketCategories = new ArrayList<>();
+		}
+		else
+			ticketCategories.add(tempticCtgry);
 	}
 	
 	@Override

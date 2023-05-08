@@ -1,6 +1,8 @@
 package com.helpDeskPortal.HDP.Repository;
 
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -15,5 +17,9 @@ public interface TicketCategoriesRepo extends JpaRepository<TicketCategories, In
 	//@Modifying(clearAutomatically = true)
 	@Query(value = query3,nativeQuery = true)
 	public TicketCategories getTicketCategoriesById(@Param("id") Integer i);
+	
+	String query4 = "SELECT * FROM ticket_categories where admin_id=:adminId";
+	@Query(value = query4,nativeQuery = true)
+	public List<TicketCategories> getAllByAdminId(@Param("adminId") int adminId);
 
 }

@@ -13,4 +13,8 @@ public interface TicketCategoriesService {
 	public List<TicketCategories> getAll();
 	
 	public Optional<TicketCategories> findById(int i);
+
+	public void saveByAdminId(TicketCategories ticketCategories, int adminId);
+
+	public List<TicketCategories> getAllbyAbminId(int adminId);
 }

@@ -41,6 +41,13 @@ public class TicketCategoriesController {
 		ticketCategoriesService.save(ticketCategories);
 	}
 	
+	@PostMapping("/addTicketCategories/{adminId}")
+	public void addTicketCategoriesByAdminId(@RequestBody TicketCategories ticketCategories,@PathVariable int adminId )
+	{
+		
+		ticketCategoriesService.saveByAdminId(ticketCategories,adminId);
+	}
+	
     @GetMapping("/allTicketCategories")
     public List<TicketCategories> allTicketCategories()
     {
@@ -48,6 +55,14 @@ public class TicketCategoriesController {
     	ticCat =  ticketCategoriesService.getAll();
     	System.out.println("Ticket "+ticCat.toString());
     	return ticCat;
+    	//return null;
+    }
+    
+    @GetMapping("/allTicketCategories/{adminId}")
+    public List<TicketCategories> allTicketCategoriesByAdminId(@PathVariable int adminId)
+    {
+    	
+    	return ticketCategoriesService.getAllbyAbminId(adminId);
     	//return null;
     }
     
@@ -64,6 +79,16 @@ public class TicketCategoriesController {
 		catch (Exception e) {
 			System.out.println(e.getStackTrace());
 		}
+		
+    	return null;
+    }
+	
+	@GetMapping("/ticketCategoryByIdByAdminId/{adminId}/{id}")
+    public  TicketCategories ticketCategoryByIdByAdminId(@PathVariable int adminId,@PathVariable int id)
+    {
+    	System.out.println(adminId+" "+id);
+    	
+    	
 		
     	return null;
     }
