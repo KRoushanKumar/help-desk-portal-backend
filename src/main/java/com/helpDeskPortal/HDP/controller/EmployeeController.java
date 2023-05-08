@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.*;
 
 import com.helpDeskPortal.HDP.Service.EmployeeService;
 import com.helpDeskPortal.HDP.entity.User;
@@ -33,7 +34,7 @@ public class EmployeeController {
 		this.empService = empService;
 	}
 	@PostMapping("/getAllEmployees/{adminId}")
-	public @ResponseBody User getAllEmployees(@PathVariable int adminId)
+	public @ResponseBody List<User> getAllEmployees(@PathVariable int adminId)
 	{
 		return empService.getAllEmployee(adminId) ;
 	}

@@ -1,6 +1,7 @@
 package com.helpDeskPortal.HDP.Service;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -28,10 +29,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
 	@Override
-	public User getAllEmployee(int adminId) {
-		
-		
-		
+	public List<User> getAllEmployee(int adminId) {
+
 		return userRepo.getAllEmployee(adminId);
 	}
 
