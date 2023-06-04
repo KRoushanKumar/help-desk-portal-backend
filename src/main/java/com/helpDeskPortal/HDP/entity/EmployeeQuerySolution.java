@@ -1,5 +1,7 @@
 package com.helpDeskPortal.HDP.entity;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +21,24 @@ public class EmployeeQuerySolution {
 	private String Solution;
 	
 	@Column
-	private Integer empQueryId; 
+	private Date lastSolutionDate;
+
+	public String getSolution() {
+		return Solution;
+	}
+
+	public void setSolution(String solution) {
+		Solution = solution;
+	}
+
+	public Date getLastSolutionDate() {
+		return lastSolutionDate;
+	}
+
+	public void setLastSolutionDate(Date lastSolutionDate) {
+		this.lastSolutionDate = lastSolutionDate;
+	}
+	
+	
 	
 }

@@ -1,6 +1,8 @@
 package com.helpDeskPortal.HDP.entity;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -51,6 +54,32 @@ public class EmployeeQuery {
 	
 	@Column
 	private Integer ticSubId;
+	
+	@OneToMany(cascade = CascadeType.ALL )
+	@JoinColumn(name = "emp_query_id")
+	private List<EmployeeQuerySolution> empQuerySol;
+
+	
+	
+	
+	
+	public List<EmployeeQuerySolution> getEmpQuerySol() {
+		return empQuerySol;
+	}
+
+	public void setEmpQuerySol(List<EmployeeQuerySolution> empQuerySol) {
+		this.empQuerySol = empQuerySol;
+	}
+	
+	public void add(EmployeeQuerySolution tempEmpQuerySolution)
+	{
+		if(empQuerySol==null)
+		{
+			empQuerySol = new ArrayList<>();
+		}
+		else
+			empQuerySol.add(tempEmpQuerySolution);
+	}
 
 	public String getDescription() {
 		return description;
