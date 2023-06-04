@@ -18,4 +18,13 @@ public class Priority {
 	
 	@Column
 	private String prioriryName;
+
+	public String getPrioriryName() {
+		return prioriryName;
+	}
+
+	public void setPrioriryName(String prioriryName) {
+		this.prioriryName = prioriryName;
+	}
+	
 }

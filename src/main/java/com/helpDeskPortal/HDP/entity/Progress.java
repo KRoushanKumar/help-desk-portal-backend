@@ -18,4 +18,14 @@ public class Progress {
 	
 	@Column
 	private String progressName;
+
+	public String getProgressName() {
+		return progressName;
+	}
+
+	public void setProgressName(String progressName) {
+		this.progressName = progressName;
+	}
+	
+	
 }
