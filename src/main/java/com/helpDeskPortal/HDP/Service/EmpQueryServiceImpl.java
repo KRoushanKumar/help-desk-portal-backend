@@ -30,5 +30,16 @@ public class EmpQueryServiceImpl implements EmpQueryService{
 		return empQueryRepo.findAll();
 	}
 
+
+
+	@Override
+	public void addEmployeeQuery(EmployeeQuery empQuery) {
+		// TODO Auto-generated method stub
+		empQueryRepo.save(empQuery);
+	}
+
+
+
+
 	
 }

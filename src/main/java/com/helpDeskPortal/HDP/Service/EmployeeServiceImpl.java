@@ -44,8 +44,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 		return userRepo.getAllEmployee(adminId);
 	}
-
-
+	
+	
 
 	@Override
 	public User saveEmployee(User user, int adminId) {
@@ -65,6 +65,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 		//return userRepo.save(user);
 		return user;
 		
+	}
+
+
+
+	@Override
+	public User getUserByUserId(int userID) {
+		// TODO Auto-generated method stub
+		System.out.println("arrived service implementation class");
+		System.out.println("user id"+userID);
+		return userRepo.getUserByUserId(userID);
 	}
 
 

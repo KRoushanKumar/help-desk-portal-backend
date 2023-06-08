@@ -20,6 +20,10 @@ public interface UserRepo extends JpaRepository<User, Integer> {
 	public User getUserByUserName(@Param("username") String username);
 	
 	
+	String query = "select * from user where id=:userID";
+	@Query(value = query,nativeQuery = true)
+	public User getUserByUserId(@Param("userID") int userID);
+	
 	String query5 = "SELECT * FROM user where admin_id=:adminId";
 	//@Transactional
 	//@Modifying(clearAutomatically = true)
