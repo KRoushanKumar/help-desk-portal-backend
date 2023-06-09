@@ -9,4 +9,8 @@ public interface EmployeeService {
 	public List<User> getAllEmployee(int adminDd);
 
 	public User saveEmployee(User user, int adminId);
+
+	public List<User> getUserByUserId(int userID);
+	
+	
 }

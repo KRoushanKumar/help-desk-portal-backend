@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "employee_query")
 public class EmployeeQuery {
@@ -28,9 +30,11 @@ public class EmployeeQuery {
 	private String description;
 	
 	@Column
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date startDate;
 	
 	@Column
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date endDate;
 	
 	@OneToOne(cascade = CascadeType.ALL)

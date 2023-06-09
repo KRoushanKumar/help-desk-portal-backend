@@ -50,8 +50,8 @@ public class TicketSubCategoriesServiceImpl implements TicketSubCategoriesServic
 
 	@Override
 	public TicketSubCategories getById(int ticSubId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return ticketSubCategoriesRepo.getTicSubCatByID(ticSubId);
 	}
 
 }

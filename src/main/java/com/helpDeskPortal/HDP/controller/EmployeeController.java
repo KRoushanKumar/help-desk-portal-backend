@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +32,16 @@ public class EmployeeController {
 		super();
 		this.empService = empService;
 	}
-	@PostMapping("/getAllEmployees/{adminId}")
+	
+	@GetMapping("/getUserByUserId/{UserID}")
+	public @ResponseBody List<User> getUserByUserId(@PathVariable("UserID") int userId) {
+		System.out.println("arrived controller");
+		System.out.println("user id"+userId);
+		return empService.getUserByUserId(userId);
+		
+	}
+	
+	@GetMapping("/getAllEmployees/{adminId}")
 	public @ResponseBody List<User> getAllEmployees(@PathVariable int adminId)
 	{
 		return empService.getAllEmployee(adminId) ;

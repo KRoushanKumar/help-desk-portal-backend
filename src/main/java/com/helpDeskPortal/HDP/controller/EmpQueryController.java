@@ -64,6 +64,8 @@ public class EmpQueryController {
 	}
 	
 	
+
+	
 	@PostMapping("/AddEmployeeQuery/{ticCatId}/{ticSubId}/{pritotyId}/{progressId}/{empId}")
 	public void AddEmployeeQuery(@RequestBody EmployeeQuery empQuery,
 			@PathVariable("ticCatId") int ticCatId,@PathVariable("ticSubId") int ticSubId,
@@ -76,7 +78,7 @@ public class EmpQueryController {
 		System.out.println("query "+empQuery.toString());
 		
 		empQuery.setPriority(priorityService.findById(pritotyId));
-		empQuery.setProgress(null);
+		empQuery.setProgress(progressService.findById(progressId));
 		empQuery.setTicketCategories(ticketCategoriesService.getById(ticCatId));
 		empQuery.setTicketSubCategories(ticketSubCategoriesService.getById(ticSubId));
 		empQuery.setUser(userService.findEmpById(empId));
