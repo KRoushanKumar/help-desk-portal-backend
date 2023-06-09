@@ -10,7 +10,7 @@ public interface EmployeeService {
 
 	public User saveEmployee(User user, int adminId);
 
-	public User getUserByUserId(int userID);
+	public List<User> getUserByUserId(int userID);
 	
 	
 }

@@ -70,7 +70,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
 	@Override
-	public User getUserByUserId(int userID) {
+	public List<User> getUserByUserId(int userID) {
 		// TODO Auto-generated method stub
 		System.out.println("arrived service implementation class");
 		System.out.println("user id"+userID);

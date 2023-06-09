@@ -34,14 +34,14 @@ public class EmployeeController {
 	}
 	
 	@GetMapping("/getUserByUserId/{UserID}")
-	public @ResponseBody User getUserByUserId(@PathVariable("UserID") int userId) {
+	public @ResponseBody List<User> getUserByUserId(@PathVariable("UserID") int userId) {
 		System.out.println("arrived controller");
 		System.out.println("user id"+userId);
 		return empService.getUserByUserId(userId);
 		
 	}
 	
-	@PostMapping("/getAllEmployees/{adminId}")
+	@GetMapping("/getAllEmployees/{adminId}")
 	public @ResponseBody List<User> getAllEmployees(@PathVariable int adminId)
 	{
 		return empService.getAllEmployee(adminId) ;

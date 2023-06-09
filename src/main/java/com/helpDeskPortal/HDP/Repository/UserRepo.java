@@ -22,7 +22,7 @@ public interface UserRepo extends JpaRepository<User, Integer> {
 	
 	String query = "select * from user where id=:userID";
 	@Query(value = query,nativeQuery = true)
-	public User getUserByUserId(@Param("userID") int userID);
+	public List<User> getUserByUserId(@Param("userID") int userID);
 	
 	String query5 = "SELECT * FROM user where admin_id=:adminId";
 	//@Transactional
