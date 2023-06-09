@@ -8,4 +8,8 @@ public interface EmpQueryService {
 	
 	public List<EmployeeQuery> findAll();
 
+	public void save(EmployeeQuery empQuery);
+
+	
+
 }

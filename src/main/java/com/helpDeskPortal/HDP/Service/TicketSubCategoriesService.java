@@ -10,4 +10,6 @@ public interface TicketSubCategoriesService {
 	public List<TicketSubCategories> findAllByTickCategryId(int ticCatId);
 
 	public List<TicketSubCategories> findAll();
+
+	public TicketSubCategories getById(int ticSubId);
 }

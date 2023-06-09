@@ -46,4 +46,12 @@ public class TicketSubCategoriesServiceImpl implements TicketSubCategoriesServic
 		return ticketSubCategoriesRepo.findAll();
 	}
 
+
+
+	@Override
+	public TicketSubCategories getById(int ticSubId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

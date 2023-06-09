@@ -30,5 +30,17 @@ public class EmpQueryServiceImpl implements EmpQueryService{
 		return empQueryRepo.findAll();
 	}
 
+
+
+	@Override
+	public void save(EmployeeQuery empQuery) {
+		empQueryRepo.save(empQuery);
+		
+	}
+
+
+
+	
+
 	
 }
