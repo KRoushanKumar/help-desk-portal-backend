@@ -14,4 +14,6 @@ public interface UserService {
 	public User findById(int adminId);
 
 	public void update(User user);
+
+	public User findEmpById(int empId);
 }

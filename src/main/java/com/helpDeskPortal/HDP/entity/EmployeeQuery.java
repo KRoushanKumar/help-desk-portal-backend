@@ -53,11 +53,13 @@ public class EmployeeQuery {
 	@JoinColumn(name = "emp_id")
 	private User user;
 	
-	@Column
-	private Integer ticCatId;
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "tic_cat_id" , referencedColumnName = "id")
+	private TicketCategories ticketCategories;
 	
-	@Column
-	private Integer ticSubId;
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "tic_sub_id" , referencedColumnName = "id")
+	private TicketSubCategories ticketSubCategories ;
 	
 	@OneToMany(cascade = CascadeType.ALL )
 	@JoinColumn(name = "emp_query_id")
@@ -145,21 +147,33 @@ public class EmployeeQuery {
 		this.user = user;
 	}
 
-	public Integer getTicCatId() {
-		return ticCatId;
+	public TicketCategories getTicketCategories() {
+		return ticketCategories;
 	}
 
-	public void setTicCatId(Integer ticCatId) {
-		this.ticCatId = ticCatId;
+	public void setTicketCategories(TicketCategories ticketCategories) {
+		this.ticketCategories = ticketCategories;
 	}
 
-	public Integer getTicSubId() {
-		return ticSubId;
+	public TicketSubCategories getTicketSubCategories() {
+		return ticketSubCategories;
 	}
 
-	public void setTicSubId(Integer ticSubId) {
-		this.ticSubId = ticSubId;
+	public void setTicketSubCategories(TicketSubCategories ticketSubCategories) {
+		this.ticketSubCategories = ticketSubCategories;
 	}
+
+	@Override
+	public String toString() {
+		return "EmployeeQuery [id=" + id + ", description=" + description + ", startDate=" + startDate + ", endDate="
+				+ endDate + ", priority=" + priority + ", progress=" + progress + ", avaTimeDiscussion="
+				+ avaTimeDiscussion + ", user=" + user + ", ticketCategories=" + ticketCategories
+				+ ", ticketSubCategories=" + ticketSubCategories + ", empQuerySol=" + empQuerySol + "]";
+	}
+
+	
+
+	
 	
 	
 	

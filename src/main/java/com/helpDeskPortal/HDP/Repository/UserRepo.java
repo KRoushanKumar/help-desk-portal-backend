@@ -35,4 +35,8 @@ public interface UserRepo extends JpaRepository<User, Integer> {
 	String query6 = "SELECT * FROM user where id=:adminId and admin_id=0";
 	@Query(value = query6,nativeQuery = true)
 	public User findByAdminId(@Param("adminId") int adminId);
+	
+	String query7 = "SELECT * FROM user where id=:empId";
+	@Query(value = query7,nativeQuery = true)
+	public User findEmployeeById(@Param("empId") int empId);
 }

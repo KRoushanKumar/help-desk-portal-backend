@@ -40,6 +40,15 @@ public class EmpQueryServiceImpl implements EmpQueryService{
 
 
 
+	@Override
+	public void save(EmployeeQuery empQuery) {
+		empQueryRepo.save(empQuery);
+		
+	}
+
+
+
+	
 
 	
 }
