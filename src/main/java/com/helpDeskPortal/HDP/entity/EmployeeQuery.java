@@ -1,6 +1,8 @@
 package com.helpDeskPortal.HDP.entity;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,8 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "employee_query")
@@ -25,9 +30,11 @@ public class EmployeeQuery {
 	private String description;
 	
 	@Column
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date startDate;
 	
 	@Column
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date endDate;
 	
 	@OneToOne(cascade = CascadeType.ALL)
@@ -46,11 +53,39 @@ public class EmployeeQuery {
 	@JoinColumn(name = "emp_id")
 	private User user;
 	
-	@Column
-	private Integer ticCatId;
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "tic_cat_id" , referencedColumnName = "id")
+	private TicketCategories ticketCategories;
 	
-	@Column
-	private Integer ticSubId;
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "tic_sub_id" , referencedColumnName = "id")
+	private TicketSubCategories ticketSubCategories ;
+	
+	@OneToMany(cascade = CascadeType.ALL )
+	@JoinColumn(name = "emp_query_id")
+	private List<EmployeeQuerySolution> empQuerySol;
+
+	
+	
+	
+	
+	public List<EmployeeQuerySolution> getEmpQuerySol() {
+		return empQuerySol;
+	}
+
+	public void setEmpQuerySol(List<EmployeeQuerySolution> empQuerySol) {
+		this.empQuerySol = empQuerySol;
+	}
+	
+	public void add(EmployeeQuerySolution tempEmpQuerySolution)
+	{
+		if(empQuerySol==null)
+		{
+			empQuerySol = new ArrayList<>();
+		}
+		else
+			empQuerySol.add(tempEmpQuerySolution);
+	}
 
 	public String getDescription() {
 		return description;
@@ -112,21 +147,33 @@ public class EmployeeQuery {
 		this.user = user;
 	}
 
-	public Integer getTicCatId() {
-		return ticCatId;
+	public TicketCategories getTicketCategories() {
+		return ticketCategories;
 	}
 
-	public void setTicCatId(Integer ticCatId) {
-		this.ticCatId = ticCatId;
+	public void setTicketCategories(TicketCategories ticketCategories) {
+		this.ticketCategories = ticketCategories;
 	}
 
-	public Integer getTicSubId() {
-		return ticSubId;
+	public TicketSubCategories getTicketSubCategories() {
+		return ticketSubCategories;
 	}
 
-	public void setTicSubId(Integer ticSubId) {
-		this.ticSubId = ticSubId;
+	public void setTicketSubCategories(TicketSubCategories ticketSubCategories) {
+		this.ticketSubCategories = ticketSubCategories;
 	}
+
+	@Override
+	public String toString() {
+		return "EmployeeQuery [id=" + id + ", description=" + description + ", startDate=" + startDate + ", endDate="
+				+ endDate + ", priority=" + priority + ", progress=" + progress + ", avaTimeDiscussion="
+				+ avaTimeDiscussion + ", user=" + user + ", ticketCategories=" + ticketCategories
+				+ ", ticketSubCategories=" + ticketSubCategories + ", empQuerySol=" + empQuerySol + "]";
+	}
+
+	
+
+	
 	
 	
 	

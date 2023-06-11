@@ -13,5 +13,10 @@ public interface TicketSubCategoriesRepo extends JpaRepository<TicketSubCategori
 	String query1= "SELECT * FROM ticket_sub_categories where ticket_categories_id=:ticCCatId";
 	@Query(value = query1,nativeQuery = true)
 	public List<TicketSubCategories> findAllByTickCategryId(@Param("ticCCatId") int ticCCatId);
+	
+	
+	String query2= "SELECT * FROM ticket_sub_categories where id=:ticSubId";
+	@Query(value = query2,nativeQuery = true)
+	public TicketSubCategories getTicSubCatByID(@Param("ticSubId") int ticSubId);
 
 }

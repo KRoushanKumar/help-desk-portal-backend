@@ -18,4 +18,24 @@ public class Priority {
 	
 	@Column
 	private String prioriryName;
+
+	public Priority()
+	{
+		
+	}
+	
+	public String getPrioriryName() {
+		return prioriryName;
+	}
+
+	public void setPrioriryName(String prioriryName) {
+		this.prioriryName = prioriryName;
+	}
+
+	@Override
+	public String toString() {
+		return "Priority [id=" + id + ", prioriryName=" + prioriryName + "]";
+	}
+	
+	
 }

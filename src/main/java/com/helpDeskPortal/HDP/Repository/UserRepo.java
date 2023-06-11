@@ -20,6 +20,10 @@ public interface UserRepo extends JpaRepository<User, Integer> {
 	public User getUserByUserName(@Param("username") String username);
 	
 	
+	String query = "select * from user where id=:userID";
+	@Query(value = query,nativeQuery = true)
+	public List<User> getUserByUserId(@Param("userID") int userID);
+	
 	String query5 = "SELECT * FROM user where admin_id=:adminId";
 	//@Transactional
 	//@Modifying(clearAutomatically = true)
@@ -31,4 +35,8 @@ public interface UserRepo extends JpaRepository<User, Integer> {
 	String query6 = "SELECT * FROM user where id=:adminId and admin_id=0";
 	@Query(value = query6,nativeQuery = true)
 	public User findByAdminId(@Param("adminId") int adminId);
+	
+	String query7 = "SELECT * FROM user where id=:empId";
+	@Query(value = query7,nativeQuery = true)
+	public User findEmployeeById(@Param("empId") int empId);
 }

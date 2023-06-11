@@ -56,6 +56,12 @@ public class UserServiceImpl implements UserService {
 		userRepo.save(user);
 	}
 
+	@Override
+	public User findEmpById(int empId) {
+		// TODO Auto-generated method stub
+		return userRepo.findEmployeeById(empId);
+	}
+
 	
 
 }
