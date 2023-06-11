@@ -1,13 +1,10 @@
 package com.helpDeskPortal.HDP.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -23,9 +20,9 @@ public class TicketSubCategories {
 	private String name;
 	
 	//many to one join TicketCategories and subTicketCategories
-	@ManyToOne(cascade= {CascadeType.ALL})
-	@JoinColumn(name="TicketCategories_id")	
-	private TicketCategories ticketCategories;
+	//@ManyToOne(cascade= {CascadeType.ALL})
+	//@JoinColumn(name="TicketCategories_id")	
+	//private TicketCategories ticketCategories;
 	
 	public TicketSubCategories()
 	{
@@ -57,20 +54,21 @@ public class TicketSubCategories {
 		this.name = name;
 	}
 
-	public TicketCategories getTicketCategories() {
-		return ticketCategories;
-	}
-
-	public void setTicketCategories(TicketCategories ticketCategories) {
-		this.ticketCategories = ticketCategories;
-	}
+//	public TicketCategories getTicketCategories() {
+//		return ticketCategories;
+//	}
+//
+//	public void setTicketCategories(TicketCategories ticketCategories) {
+//		this.ticketCategories = ticketCategories;
+//	}
 
 
 
 	@Override
 	public String toString() {
-		return "TicketSubCategories [id=" + id + ", name=" + name + ", ticketCategories=" + ticketCategories + "]";
+		return "TicketSubCategories [id=" + id + ", name=" + name + "]";
 	}
-	
+
+
 	
 }

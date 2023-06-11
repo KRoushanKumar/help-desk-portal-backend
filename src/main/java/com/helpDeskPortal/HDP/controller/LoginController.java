@@ -67,8 +67,9 @@ public class LoginController {
 				return user;
 			
 			System.out.println(tempUser);
+			System.out.println(user.getPassword());
 			//String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
-	
+	        
 	        if (BCrypt.checkpw( user.getPassword(),tempUser.getPassword())) {
 	            System.out.println("It matches");
 	            return tempUser;
