@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.helpDeskPortal.HDP.Repository.EmpQueryRepo;
 import com.helpDeskPortal.HDP.entity.EmployeeQuery;
+import com.helpDeskPortal.HDP.entity.User;
 
 @Service
 public class EmpQueryServiceImpl implements EmpQueryService{
@@ -44,6 +45,14 @@ public class EmpQueryServiceImpl implements EmpQueryService{
 	public void save(EmployeeQuery empQuery) {
 		empQueryRepo.save(empQuery);
 		
+	}
+
+
+
+	@Override
+	public List<EmployeeQuery> getEmployeeQuery(int empId) {
+		// TODO Auto-generated method stub
+		return empQueryRepo.getEmployeeQueryById(empId);
 	}
 
 
