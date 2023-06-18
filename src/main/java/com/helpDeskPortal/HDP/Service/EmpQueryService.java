@@ -10,6 +10,7 @@ public interface EmpQueryService {
 	public void addEmployeeQuery(EmployeeQuery empQuery);
 
 	public void save(EmployeeQuery empQuery);
+	public List<EmployeeQuery> employeeQueryByCategoryAndSubCategory(int ticCatId, int ticSubId);
 
 	
 
