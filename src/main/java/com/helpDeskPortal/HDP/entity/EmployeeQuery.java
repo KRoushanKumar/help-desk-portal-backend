@@ -95,13 +95,7 @@ public class EmployeeQuery {
 			empQuerySol.add(tempEmpQuerySolution);
 	}
 
-	public Integer getId() {
-		return id;
-	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getDescription() {
 		return description;

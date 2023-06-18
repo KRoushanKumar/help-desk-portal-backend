@@ -98,11 +98,6 @@ public class EmpQueryController {
 		empQueryService.save(empQuery);
 	}
 	
-	@GetMapping("/getAllEmployeesQuery/{UserID}")
-	public @ResponseBody List<EmployeeQuery> getEmployeeQuery(@PathVariable("UserID") int empId)
-	{
-		return empQueryService.getEmployeeQuery(empId) ;
-	}
-	
+
 
 }
