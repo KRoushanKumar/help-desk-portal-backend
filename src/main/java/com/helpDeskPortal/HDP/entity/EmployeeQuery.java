@@ -29,6 +29,14 @@ public class EmployeeQuery {
 	@Column
 	private String description;
 	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	@Column
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date startDate;
