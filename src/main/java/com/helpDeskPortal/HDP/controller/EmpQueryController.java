@@ -63,6 +63,14 @@ public class EmpQueryController {
 		return empQueryService.findAll();
 	}
 	
+	@GetMapping("/employeeQueryByCategoryAndSubCategory/{ticCatId}/{ticSubId}")
+	public List<EmployeeQuery> employeeQueryByCategoryAndSubCategory(
+			@PathVariable("ticCatId") int ticCatId,
+			@PathVariable("ticSubId") int ticSubId)
+	{
+		return empQueryService.employeeQueryByCategoryAndSubCategory(ticCatId,ticSubId);
+	}
+	
 	
 
 	

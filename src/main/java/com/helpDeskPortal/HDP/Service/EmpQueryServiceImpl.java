@@ -34,7 +34,7 @@ public class EmpQueryServiceImpl implements EmpQueryService{
 
 	@Override
 	public void addEmployeeQuery(EmployeeQuery empQuery) {
-		// TODO Auto-generated method stub
+		
 		empQueryRepo.save(empQuery);
 	}
 
@@ -44,6 +44,15 @@ public class EmpQueryServiceImpl implements EmpQueryService{
 	public void save(EmployeeQuery empQuery) {
 		empQueryRepo.save(empQuery);
 		
+	}
+
+
+
+	@Override
+	public List<EmployeeQuery> employeeQueryByCategoryAndSubCategory(int ticCatId, int ticSubId) {
+		
+		
+		return empQueryRepo.employeeQueryByCategoryAndSubCategory(ticCatId,ticSubId);
 	}
 
 
