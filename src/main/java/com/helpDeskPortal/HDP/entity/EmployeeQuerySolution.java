@@ -18,17 +18,40 @@ public class EmployeeQuerySolution {
 	private Integer id;
 	
 	@Column
-	private String Solution;
+	private String solution;
 	
 	@Column
 	private Date lastSolutionDate;
 
+	
+	public EmployeeQuerySolution()
+	{
+		
+	}
+	
+	public EmployeeQuerySolution(String solution, Date lastSolutionDate) {
+		super();
+		this.solution = solution;
+		this.lastSolutionDate = lastSolutionDate;
+	}
+
+	
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
 	public String getSolution() {
-		return Solution;
+		return solution;
 	}
 
 	public void setSolution(String solution) {
-		Solution = solution;
+		this.solution = solution;
 	}
 
 	public Date getLastSolutionDate() {
@@ -38,6 +61,14 @@ public class EmployeeQuerySolution {
 	public void setLastSolutionDate(Date lastSolutionDate) {
 		this.lastSolutionDate = lastSolutionDate;
 	}
+
+
+	@Override
+	public String toString() {
+		return "EmployeeQuerySolution [id=" + id + ", solution=" + solution + ", lastSolutionDate=" + lastSolutionDate
+				+ "]";
+	}
+	
 	
 	
 	
