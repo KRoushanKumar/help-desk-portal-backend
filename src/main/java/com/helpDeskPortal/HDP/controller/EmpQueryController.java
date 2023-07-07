@@ -23,6 +23,7 @@ import com.helpDeskPortal.HDP.Service.TicketCategoriesService;
 import com.helpDeskPortal.HDP.Service.TicketSubCategoriesService;
 import com.helpDeskPortal.HDP.Service.UserService;
 import com.helpDeskPortal.HDP.entity.EmployeeQuery;
+import com.helpDeskPortal.HDP.entity.EmployeeQuerySolution;
 import com.helpDeskPortal.HDP.entity.Priority;
 import com.helpDeskPortal.HDP.entity.User;
 
@@ -98,6 +99,28 @@ public class EmpQueryController {
 		empQueryService.save(empQuery);
 	}
 	
+	//Employee Query ID Is is ticket ID.
+	@PostMapping("/addEmpQuerySolution/{empQueryId}")
+	public void addEmpQuerySolution(@RequestBody EmployeeQuerySolution empQuerySol,@PathVariable int empQueryId)
+	{
+		System.out.println("empQuery " +empQuerySol);
+		
+		EmployeeQuery tempEmpQuery = new EmployeeQuery();
+		tempEmpQuery = empQueryService.getQueryByID(empQueryId);
+		tempEmpQuery.add(empQuerySol);
+		
+		System.out.println(" tempEmpQuery "+tempEmpQuery);
+		
+		empQueryService.addEmployeeQuery(tempEmpQuery);
+		
+	}
+	
+	@GetMapping("/queryById/{id}")
+	public EmployeeQuery queryById(@PathVariable int id)
+	{
+		
+		return empQueryService.getQueryByID(id);
+	}
 
 
 }

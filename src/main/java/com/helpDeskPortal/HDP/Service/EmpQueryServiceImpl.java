@@ -56,6 +56,14 @@ public class EmpQueryServiceImpl implements EmpQueryService{
 
 
 
+	@Override
+	public EmployeeQuery getQueryByID(int id) {
+		
+		return empQueryRepo.getQueryById(id);
+	}
+
+
+
 	
 
 	

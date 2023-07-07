@@ -14,5 +14,9 @@ public interface EmpQueryRepo extends JpaRepository<EmployeeQuery, Integer> {
 	String query1 = "select * from employee_query where tic_cat_id =:ticCatId and tic_sub_id =:ticSubId";
 	@Query(value = query1,nativeQuery = true)
 	List<EmployeeQuery> employeeQueryByCategoryAndSubCategory(@Param("ticCatId") int ticCatId,@Param("ticSubId") int ticSubId);
+	
+	String query2 = "select * from employee_query where id=:id";
+	@Query(value = query2,nativeQuery = true)
+	EmployeeQuery getQueryById(@Param("id") int id);
 
 }
