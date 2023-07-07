@@ -15,6 +15,8 @@ public interface EmpQueryService {
 	public List<EmployeeQuery> employeeQueryByCategoryAndSubCategory(int ticCatId, int ticSubId);
 	
 	public EmployeeQuery getQueryByID(int id);
+
+	public List<EmployeeQuery> getByUserId(int userID);
 	
 
 }

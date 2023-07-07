@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.helpDeskPortal.HDP.Repository.UserRepo;
 import com.helpDeskPortal.HDP.entity.User;
-import com.helpDeskPortal.HDP.exceptions.ResourceNotFoundExcepotion;
+//import com.helpDeskPortal.HDP.exceptions.ResourceNotFoundExcepotion;
 
 
 @Service
@@ -82,10 +82,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 		// TODO Auto-generated method stub
 		System.out.println("In UpdateEmployee service");
 		User user1 = this.userRepo.findEmployeeById(empId);
+		System.out.println(user);
+		System.out.println(empId);
 		user1.setFirstName(user.getFirstName());
 		user1.setLastName(user.getLastName());
 		user1.setEmail(user.getEmail());
-		user1.setUserName(user.getUserName());
+		//user1.setUserName(user.getUserName());
 		return userRepo.save(user1);
 	}
 

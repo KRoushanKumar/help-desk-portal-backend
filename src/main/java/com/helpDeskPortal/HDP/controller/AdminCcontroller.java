@@ -45,6 +45,7 @@ public class AdminCcontroller {
 	public @ResponseBody User updateEmployee(@RequestBody User user,@PathVariable int empId)
 	{
 		System.out.println("In UpdateEmployee controller");
+		System.out.println(user +" "+ empId);
 		 return empService.updateEmployee(user,empId);
 	}
 	
