@@ -65,6 +65,14 @@ public class EmpQueryServiceImpl implements EmpQueryService{
 
 
 
+	@Override
+	public List<EmployeeQuery> getByUserId(int userID) {
+		
+		return empQueryRepo.findAllByUserID(userID);
+	}
+
+
+
 	
 
 	

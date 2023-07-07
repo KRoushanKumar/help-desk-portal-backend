@@ -3,6 +3,7 @@ package com.helpDeskPortal.HDP.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -62,6 +63,14 @@ public class EmpQueryController {
 	public List<EmployeeQuery> AllEmployeeQuery()
 	{
 		return empQueryService.findAll();
+	}
+	
+	@GetMapping("/AllEmployeeQuery/{UserID}")
+	public List<EmployeeQuery> AllEmployeeQuery(@PathVariable int UserID )
+	{
+		
+		System.out.println("UserID" + UserID);
+		return empQueryService.getByUserId(UserID);
 	}
 	
 	@GetMapping("/employeeQueryByCategoryAndSubCategory/{ticCatId}/{ticSubId}")
