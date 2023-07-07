@@ -12,5 +12,7 @@ public interface EmployeeService {
 
 	public List<User> getUserByUserId(int userID);
 	
-	
+	public User updateEmployee(User user,int empId);
+
+	public void deleteEmployee(int empId);
 }

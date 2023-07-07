@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.helpDeskPortal.HDP.Repository.EmpQueryRepo;
 import com.helpDeskPortal.HDP.entity.EmployeeQuery;
+import com.helpDeskPortal.HDP.entity.User;
 
 @Service
 public class EmpQueryServiceImpl implements EmpQueryService{
@@ -45,8 +46,6 @@ public class EmpQueryServiceImpl implements EmpQueryService{
 		empQueryRepo.save(empQuery);
 		
 	}
-
-
 
 	@Override
 	public List<EmployeeQuery> employeeQueryByCategoryAndSubCategory(int ticCatId, int ticSubId) {

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.helpDeskPortal.HDP.Repository.UserRepo;
 import com.helpDeskPortal.HDP.entity.User;
+//import com.helpDeskPortal.HDP.exceptions.ResourceNotFoundExcepotion;
 
 
 @Service
@@ -39,9 +40,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public List<User> getAllEmployee(int adminId) {
-		
-		
-		
 		return userRepo.getAllEmployee(adminId);
 	}
 	
@@ -75,6 +73,32 @@ public class EmployeeServiceImpl implements EmployeeService {
 		System.out.println("arrived service implementation class");
 		System.out.println("user id"+userID);
 		return userRepo.getUserByUserId(userID);
+	}
+
+
+
+	@Override
+	public User updateEmployee(User user,int empId) {
+		// TODO Auto-generated method stub
+		System.out.println("In UpdateEmployee service");
+		User user1 = this.userRepo.findEmployeeById(empId);
+		System.out.println(user);
+		System.out.println(empId);
+		user1.setFirstName(user.getFirstName());
+		user1.setLastName(user.getLastName());
+		user1.setEmail(user.getEmail());
+		//user1.setUserName(user.getUserName());
+		return userRepo.save(user1);
+	}
+
+
+
+	@Override
+	public void deleteEmployee(int empId) {
+		// TODO Auto-generated method stub
+		System.out.println("Employee service");
+		User user1 = this.userRepo.findEmployeeById(empId);
+		this.userRepo.delete(user1);
 	}
 
 

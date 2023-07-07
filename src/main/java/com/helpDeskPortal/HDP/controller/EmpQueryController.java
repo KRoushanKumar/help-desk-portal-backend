@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.helpDeskPortal.HDP.Repository.EmpQueryRepo;
@@ -25,6 +26,7 @@ import com.helpDeskPortal.HDP.Service.UserService;
 import com.helpDeskPortal.HDP.entity.EmployeeQuery;
 import com.helpDeskPortal.HDP.entity.EmployeeQuerySolution;
 import com.helpDeskPortal.HDP.entity.Priority;
+import com.helpDeskPortal.HDP.entity.User;
 
 @Controller
 @CrossOrigin(origins = "http://localhost:3000")
@@ -128,5 +130,6 @@ public class EmpQueryController {
 		
 		return empQueryService.getQueryByID(id);
 	}
+
 
 }
