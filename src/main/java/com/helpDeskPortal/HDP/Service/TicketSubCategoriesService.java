@@ -12,4 +12,8 @@ public interface TicketSubCategoriesService {
 	public List<TicketSubCategories> findAll();
 
 	public TicketSubCategories getById(int ticSubId);
+
+	public void updateSubCategory(TicketSubCategories tempTicketSubCategories, int ticSubId);
+
+	public void deleteSubCategory(int ticSubId);
 }

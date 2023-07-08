@@ -21,4 +21,5 @@ public interface TicketCategoriesService {
 	public void updateTicketCatgory(TicketCategories ticketCategories, int ticketId);
 
 	public void deleteTicketCategory(int ticketId);
+
 }
