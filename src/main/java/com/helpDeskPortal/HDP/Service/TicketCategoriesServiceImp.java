@@ -98,4 +98,27 @@ public class TicketCategoriesServiceImp implements TicketCategoriesService {
 		return ticketCategoriesRepo.getAllByAdminId(adminId);
 	}
 
+
+
+	@Override
+	public void updateTicketCatgory(TicketCategories ticketCategories, int ticketId) {
+		// TODO Auto-generated method stub
+		System.out.println("update ticket categoroy service called");
+		TicketCategories ticket=this.ticketCategoriesRepo.getTicketCategoriesById(ticketId);
+		System.out.println(ticket.getName());
+		ticket.setName(ticketCategories.getName());
+		this.ticketCategoriesRepo.save(ticket);
+	}
+
+
+
+	@Override
+	public void deleteTicketCategory(int ticketId) {
+		// TODO Auto-generated method stub
+		TicketCategories ticket=this.ticketCategoriesRepo.getTicketCategoriesById(ticketId);
+		System.out.println("delete service of ticket category ");
+		System.out.println(ticket);
+		this.ticketCategoriesRepo.delete(ticket);
+	}
+
 }

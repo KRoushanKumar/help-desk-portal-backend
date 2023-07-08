@@ -16,10 +16,11 @@ public interface TicketCategoriesRepo extends JpaRepository<TicketCategories, In
 	//@Transactional
 	//@Modifying(clearAutomatically = true)
 	@Query(value = query3,nativeQuery = true)
-	public TicketCategories getTicketCategoriesById(@Param("id") Integer i);
+	public TicketCategories getTicketCategoriesById(@Param("id") Integer id);
 	
 	String query4 = "SELECT * FROM ticket_categories where admin_id=:adminId";
 	@Query(value = query4,nativeQuery = true)
 	public List<TicketCategories> getAllByAdminId(@Param("adminId") int adminId);
+	
 
 }

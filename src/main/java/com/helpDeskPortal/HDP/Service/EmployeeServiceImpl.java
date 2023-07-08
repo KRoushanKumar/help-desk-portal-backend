@@ -98,6 +98,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		// TODO Auto-generated method stub
 		System.out.println("Employee service");
 		User user1 = this.userRepo.findEmployeeById(empId);
+		System.out.println(user1);
 		this.userRepo.delete(user1);
 	}
 

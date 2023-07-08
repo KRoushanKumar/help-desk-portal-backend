@@ -7,9 +7,11 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -46,6 +48,13 @@ public class TicketCategoriesController {
 	{
 		
 		ticketCategoriesService.saveByAdminId(ticketCategories,adminId);
+	}
+	
+	@PutMapping("/updateTicketCategory/{ticketId}")
+	public void updateTicketCategory(@RequestBody TicketCategories ticketCategories,@PathVariable int ticketId) {
+		this.ticketCategoriesService.updateTicketCatgory(ticketCategories, ticketId);
+		System.out.println(ticketCategories);
+		System.out.println("update ticket categoroy controller called");
 	}
 	
     @GetMapping("/allTicketCategories")
@@ -93,5 +102,10 @@ public class TicketCategoriesController {
     	return null;
     }
     
+	@DeleteMapping("/deleteCategory/{ticketId}")
+	public void deleteTicketCategory(@PathVariable int ticketId) {
+		System.out.println("delete controller of ticket category");
+		this.ticketCategoriesService.deleteTicketCategory(ticketId);
+	}
 	
 }
