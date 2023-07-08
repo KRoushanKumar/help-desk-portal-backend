@@ -95,10 +95,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public void deleteEmployee(int empId) {
-		// TODO Auto-generated method stub
+		
 		System.out.println("Employee service");
-		User user1 = this.userRepo.findEmployeeById(empId);
-		this.userRepo.delete(user1);
+		try {
+			userRepo.deleteById(empId);
+		} catch (Exception e) {
+			
+		}
+		
 	}
 
 
