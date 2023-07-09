@@ -72,6 +72,20 @@ public class EmpQueryServiceImpl implements EmpQueryService{
 
 
 
+	@Override
+	public Boolean deleteQueryByUserID(int userID) {
+		
+		
+		try {
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return false;
+	}
+
+
+
 	
 
 	

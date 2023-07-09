@@ -50,9 +50,9 @@ public class AdminCcontroller {
 	}
 	
 	@DeleteMapping("/deleteEmployee/{empId}")
-	public void deleteEmployee(@PathVariable int empId) {
+	public boolean deleteEmployee(@PathVariable int empId) {
 		System.out.println("delete contoller");
-		empService.deleteEmployee(empId);
+		 return empService.deleteEmployee(empId);
 	}
 	
 	

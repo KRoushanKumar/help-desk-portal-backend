@@ -45,32 +45,51 @@ public class EmployeeQuery {
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date endDate;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade= {CascadeType.DETACH,
+			 CascadeType.MERGE,
+			 CascadeType.PERSIST,
+			 CascadeType.REFRESH})
     @JoinColumn(name = "priority_id" , referencedColumnName = "id")
 	private Priority priority;
 	
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade= {CascadeType.DETACH,
+			 CascadeType.MERGE,
+			 CascadeType.PERSIST,
+			 CascadeType.REFRESH})
     @JoinColumn(name = "progress_id" , referencedColumnName = "id")
 	private Progress progress;
 	
 	@Column
 	private String avaTimeDiscussion;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "emp_id")
+	@ManyToOne(cascade= {CascadeType.DETACH,
+			 CascadeType.MERGE,
+			 CascadeType.PERSIST,
+			 CascadeType.REFRESH})
+	@JoinColumn(name = "user_id")
 	private User user;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "tic_cat_id" , referencedColumnName = "id")
+	@OneToOne(cascade= {CascadeType.DETACH,
+			 CascadeType.MERGE,
+			 CascadeType.PERSIST,
+			 CascadeType.REFRESH})
+    @JoinColumn(name = "ticket_categories_id" , referencedColumnName = "id")
 	private TicketCategories ticketCategories;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "tic_sub_id" , referencedColumnName = "id")
+	@OneToOne(cascade= {CascadeType.DETACH,
+			 CascadeType.MERGE,
+			 CascadeType.PERSIST,
+			 CascadeType.REFRESH})
+    @JoinColumn(name = "ticket_sub_categories_id" , referencedColumnName = "id")
 	private TicketSubCategories ticketSubCategories ;
 	
-	@OneToMany(cascade = CascadeType.ALL )
-	@JoinColumn(name = "emp_query_id")
+	@OneToMany(cascade= {CascadeType.DETACH,
+			 CascadeType.MERGE,
+			 CascadeType.PERSIST,
+			 CascadeType.REFRESH,
+			 CascadeType.REMOVE} )
+	@JoinColumn(name = "employee_query_id")
 	private List<EmployeeQuerySolution> empQuerySol;
 
 	

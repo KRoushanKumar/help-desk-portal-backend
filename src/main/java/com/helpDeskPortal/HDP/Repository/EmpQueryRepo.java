@@ -19,7 +19,7 @@ public interface EmpQueryRepo extends JpaRepository<EmployeeQuery, Integer> {
 	@Query(value = query2,nativeQuery = true)
 	EmployeeQuery getQueryById(@Param("id") int id);
 	
-	String query3 = "select * from employee_query where emp_id=:userID";
+	String query3 = "select * from employee_query where user_id=:userID";
 	@Query(value = query3,nativeQuery = true)
 	List<EmployeeQuery> findAllByUserID(@Param("userID") int userID);
 

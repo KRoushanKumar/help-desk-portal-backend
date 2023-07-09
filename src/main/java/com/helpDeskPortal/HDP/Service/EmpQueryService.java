@@ -18,5 +18,7 @@ public interface EmpQueryService {
 
 	public List<EmployeeQuery> getByUserId(int userID);
 	
+	public Boolean deleteQueryByUserID(int userID); 
+	
 
 }

@@ -94,15 +94,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
 	@Override
-	public void deleteEmployee(int empId) {
+	public boolean deleteEmployee(int empId) {
 		
 		System.out.println("Employee service");
 		try {
 			userRepo.deleteById(empId);
+			return true;
 		} catch (Exception e) {
-			
+			System.out.println(e);
 		}
-		
+		return false;
 	}
 
 
