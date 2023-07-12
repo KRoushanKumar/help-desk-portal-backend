@@ -66,6 +66,14 @@ public class TicketSubCategoriesController {
 		//return ticketSubCategoriesService.findAll();
 	}
 	
+	@GetMapping("/getSubCatById/{ticSubId}")
+	public @ResponseBody TicketSubCategories getSubCatById(@PathVariable int ticSubId)
+	{
+		
+		return this.ticketSubCategoriesService.getSubCatById(ticSubId);
+		
+	}
+	
 	@PutMapping("/updateSubCateTic/{ticSubId}")
 	public void updateSubCateTic(@RequestBody TicketSubCategories tempTicketSubCategories,@PathVariable int ticSubId) {
 		this.ticketSubCategoriesService.updateSubCategory(tempTicketSubCategories,ticSubId);

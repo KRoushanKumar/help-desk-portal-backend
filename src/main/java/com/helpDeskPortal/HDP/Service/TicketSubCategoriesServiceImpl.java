@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.helpDeskPortal.HDP.Repository.TicketSubCategoriesRepo;
+import com.helpDeskPortal.HDP.entity.TicketCategories;
 import com.helpDeskPortal.HDP.entity.TicketSubCategories;
 
 @Service
@@ -59,6 +60,13 @@ public class TicketSubCategoriesServiceImpl implements TicketSubCategoriesServic
 		// TODO Auto-generated method stub
 		TicketSubCategories subCategory=this.ticketSubCategoriesRepo.getTicSubCatByID(ticSubId);
 		this.ticketSubCategoriesRepo.delete(subCategory);
+	}
+
+	@Override
+	public TicketSubCategories getSubCatById(int ticSubId) {
+		// TODO Auto-generated method stub
+		
+		return this.ticketSubCategoriesRepo.getTicSubCatByID(ticSubId);
 	}
 
 }
