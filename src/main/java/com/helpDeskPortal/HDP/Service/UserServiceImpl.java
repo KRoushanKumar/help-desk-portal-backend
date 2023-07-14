@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.helpDeskPortal.HDP.Exception.UserAllreadyFoundException;
 import com.helpDeskPortal.HDP.Repository.UserRepo;
 import com.helpDeskPortal.HDP.entity.TicketCategories;
 import com.helpDeskPortal.HDP.entity.User;
@@ -25,11 +26,28 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void save(User user) {
+	public void save(User user) throws UserAllreadyFoundException {
 		
 		final String encodedPassword  = passwordEncoder.encode(user.getPassword());
 		user.setPassword(encodedPassword);
-		userRepo.save(user);
+		
+			User tUser = userRepo.getUserByUserName(user.getUserName());
+			if(tUser.getId()!=null) {
+			 throw new UserAllreadyFoundException("User name allready exist:"+user.getUserName());
+			}
+			else
+			{
+				try {
+					userRepo.save(user);
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+				
+			}
+			
+			
+		
+		
 	}
 
 	@Override

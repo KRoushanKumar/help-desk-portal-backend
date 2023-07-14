@@ -2,10 +2,11 @@ package com.helpDeskPortal.HDP.Service;
 
 import java.util.List;
 
+import com.helpDeskPortal.HDP.Exception.UserAllreadyFoundException;
 import com.helpDeskPortal.HDP.entity.User;
 
 public interface UserService {
-	public void save(User user);
+	public void save(User user) throws UserAllreadyFoundException;
 
 	public User getUserByUserName(String userName);
 

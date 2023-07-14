@@ -128,7 +128,8 @@ public class EmpQueryController {
 		EmployeeQuery tempEmpQuery = new EmployeeQuery();
 		tempEmpQuery = empQueryService.getQueryByID(empQueryId);
 		tempEmpQuery.add(empQuerySol);
-		
+		tempEmpQuery.setPriority(priorityService.findById(2));
+		tempEmpQuery.setProgress(progressService.findById(2));
 		System.out.println(" tempEmpQuery "+tempEmpQuery);
 		
 		empQueryService.addEmployeeQuery(tempEmpQuery);

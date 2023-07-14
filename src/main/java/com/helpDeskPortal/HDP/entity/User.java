@@ -2,7 +2,9 @@ package com.helpDeskPortal.HDP.entity;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -56,7 +58,7 @@ public class User {
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "admin_id" , referencedColumnName = "id")
-	private List<TicketCategories> ticketCategories;
+	private Set<TicketCategories> ticketCategories;
 	
 
 	public User()
@@ -80,7 +82,7 @@ public class User {
 	
 	
 	public User(String userName, String password, String firstName, String lastName, String email,
-			Collection<Role> roles, int adminId, List<TicketCategories> ticketCategories) {
+			Collection<Role> roles, int adminId, Set<TicketCategories> ticketCategories) {
 		super();
 		this.userName = userName;
 		this.password = password;
@@ -168,18 +170,18 @@ public class User {
 	
 	
 	
-	public List<TicketCategories> getTicketCategories() {
+	public Set<TicketCategories> getTicketCategories() {
 		return ticketCategories;
 	}
 	public void setTicketCategories(List<TicketCategories> ticketCategories) {
-		this.ticketCategories = ticketCategories;
+		this.ticketCategories = (Set<TicketCategories>) ticketCategories;
 	}
 	
 	public void addTickCtgry(TicketCategories tempticCtgry)
 	{
 		if(ticketCategories==null)
 		{
-			ticketCategories = new ArrayList<>();
+			ticketCategories = new HashSet<>();
 		}
 		else
 			ticketCategories.add(tempticCtgry);

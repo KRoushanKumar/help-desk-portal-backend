@@ -11,7 +11,7 @@ import com.helpDeskPortal.HDP.entity.EmployeeQuery;
 
 public interface EmpQueryRepo extends JpaRepository<EmployeeQuery, Integer> {
 
-	String query1 = "select * from employee_query where tic_cat_id =:ticCatId and tic_sub_id =:ticSubId";
+	String query1 = "select * from employee_query where ticket_categories_id =:ticCatId and ticket_sub_categories_id =:ticSubId";
 	@Query(value = query1,nativeQuery = true)
 	List<EmployeeQuery> employeeQueryByCategoryAndSubCategory(@Param("ticCatId") int ticCatId,@Param("ticSubId") int ticSubId);
 	

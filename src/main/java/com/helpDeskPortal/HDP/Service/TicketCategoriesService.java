@@ -17,4 +17,9 @@ public interface TicketCategoriesService {
 	public void saveByAdminId(TicketCategories ticketCategories, int adminId);
 
 	public List<TicketCategories> getAllbyAbminId(int adminId);
+	
+	public void updateTicketCatgory(TicketCategories ticketCategories, int ticketId);
+
+	public void deleteTicketCategory(int ticketId);
+
 }

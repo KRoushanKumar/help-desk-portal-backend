@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.helpDeskPortal.HDP.Repository.TicketSubCategoriesRepo;
+import com.helpDeskPortal.HDP.entity.TicketCategories;
 import com.helpDeskPortal.HDP.entity.TicketSubCategories;
 
 @Service
@@ -14,13 +15,10 @@ public class TicketSubCategoriesServiceImpl implements TicketSubCategoriesServic
 	@Autowired
 	private TicketSubCategoriesRepo ticketSubCategoriesRepo; 
 	
-	
 	public TicketSubCategoriesServiceImpl(TicketSubCategoriesRepo ticketSubCategoriesRepo) {
 		super();
 		this.ticketSubCategoriesRepo = ticketSubCategoriesRepo;
 	}
-
-
 
 	@Override
 	public void save(TicketSubCategories ticketSubCategories) {
@@ -29,8 +27,6 @@ public class TicketSubCategoriesServiceImpl implements TicketSubCategoriesServic
 			
 	}
 
-
-
 	@Override
 	public List<TicketSubCategories> findAllByTickCategryId(int ticCCatId) {
 		
@@ -38,20 +34,39 @@ public class TicketSubCategoriesServiceImpl implements TicketSubCategoriesServic
 		return ticketSubCategoriesRepo.findAllByTickCategryId(ticCCatId);
 	}
 
-
-
 	@Override
 	public List<TicketSubCategories> findAll() {
 		
 		return ticketSubCategoriesRepo.findAll();
 	}
 
+	@Override
+	public TicketSubCategories getById(int ticSubId) {
+		return ticketSubCategoriesRepo.getTicSubCatByID(ticSubId);
+	}
+
 
 
 	@Override
-	public TicketSubCategories getById(int ticSubId) {
+	public void updateSubCategory(TicketSubCategories tempTicketSubCategories, int ticSubId) {
+		// TODO Auto-generated method stub
+		TicketSubCategories subCategory=this.ticketSubCategoriesRepo.getTicSubCatByID(ticSubId);
+		subCategory.setName(tempTicketSubCategories.getName());
+		this.ticketSubCategoriesRepo.save(subCategory);
+	}
+
+	@Override
+	public void deleteSubCategory(int ticSubId) {
+		// TODO Auto-generated method stub
+		TicketSubCategories subCategory=this.ticketSubCategoriesRepo.getTicSubCatByID(ticSubId);
+		this.ticketSubCategoriesRepo.delete(subCategory);
+	}
+
+	@Override
+	public TicketSubCategories getSubCatById(int ticSubId) {
+		// TODO Auto-generated method stub
 		
-		return ticketSubCategoriesRepo.getTicSubCatByID(ticSubId);
+		return this.ticketSubCategoriesRepo.getTicSubCatByID(ticSubId);
 	}
 
 }

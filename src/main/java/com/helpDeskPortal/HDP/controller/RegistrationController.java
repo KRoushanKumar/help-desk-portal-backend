@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.helpDeskPortal.HDP.Exception.UserAllreadyFoundException;
 import com.helpDeskPortal.HDP.Service.RoleService;
 import com.helpDeskPortal.HDP.Service.UserService;
 import com.helpDeskPortal.HDP.entity.User;
@@ -35,12 +36,19 @@ public class RegistrationController {
 	}
 	
 	@PostMapping("/registration")
-	public void registration(@RequestBody User user)
+	public void registration(@RequestBody User user) throws UserAllreadyFoundException
 	{
 		System.out.println(user.toString());
 		user.setRoles(Arrays.asList(roleService.getRoleByName("Admin")));
 		user.setAdminId(0);
-		userService.save(user);
+		//try {
+		
+			userService.save(user);
+			
+		//} catch (Exception e) {
+			
+		//}
+		
 	}
 	
 	@GetMapping("/userName/{userName}")
